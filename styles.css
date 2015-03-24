@@ -1,0 +1,9 @@
+.cycle {
+	background-color: red;
+	width: 25%;
+	height: 50px;
+}
+
+.on {
+	background-color: blue;
+}
