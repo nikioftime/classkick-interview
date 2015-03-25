@@ -49,7 +49,7 @@ for (var i = 0; i < 2*n; i++)
 	element.appendChild(row);
 };
 buttonBase.orderByKey().on("child_added", function(snapshot) {
-	var item = snapshot.val()
+	var item = snapshot.val();
 	button_bool_array[item.number] = item.toggle;
 	if (!(item.toggle))
 	{
