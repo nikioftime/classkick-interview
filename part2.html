@@ -5,19 +5,27 @@
 		<link rel="stylesheet" href="styles.css">
 		<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-		<script src="angular.min.js"></script>
 	</head>
 	<body>
-		<button>Buttons!</button>
-		<div id="fire"><i class="fa fa-fire"></i></div>
-		<div id="fire-extinguisher"><i class="fa fa-fire-extinguisher"></i></div>
-		<div id="tools-panel">
-			<button id="pentool"><i class="fa fa-pencil"></i></button>
-			<button id="erasertool"><i class="fa fa-eraser"></i></button>
+		<div class = "nav">
+			<center>
+				<a href="index.html">Buttons!</a>
+				<a href="part2bez.html">Bezier Attempt!</a>
+			</center>
 		</div>
-		<canvas id="drawing-canvas" width="500px" height="500px">
-			
-		</canvas>
+		<center>
+			<div id="fire"><h2><i class="fa fa-fire"></i></h2></div>
+			<div id="fire-extinguisher"><h2><i class="fa fa-fire-extinguisher"></i></h2></div>
+		</center>
+		<center>
+			<div id="tools-panel">
+				<button id="pentool"><h1><i class="fa fa-pencil"></i></h1></button>
+				<button id="erasertool"><h1><i class="fa fa-eraser"></i></h1></button>
+			</div>
+		</center>
+		<center>
+			<canvas id="drawing-canvas" width="640px" height="400px" />
+		</center>
 		<script type="text/javascript" src="scriptpart2.js"></script>
 	</body>
 

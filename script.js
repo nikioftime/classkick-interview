@@ -10,7 +10,7 @@ var myFirebaseRef = new Firebase("https://blinding-fire-3403.firebaseio.com/");
 var connectedRef = new Firebase("https://blinding-fire-3403.firebaseio.com/.info/connected");
 var buttonBase = myFirebaseRef.child('/buttons');
 
-var n = 4;
+var n = 3;
 var button_bool_array=[];
 for (var i = 0; i < 2*n; i++)
 {

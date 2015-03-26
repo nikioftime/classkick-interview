@@ -15,10 +15,15 @@ var currLine = 0, eraser = 0;
 
 var changeeraser = function (value) {
 	eraser = value;
-	// console.log(eraser);
 }
 
-myCanvas.onmousedown = function (e) { 
+function preventBehavior(e) {
+    e.preventDefault(); 
+};
+
+document.addEventListener("touchmove", preventBehavior, false);
+
+myCanvas.ontouchstart = myCanvas.onmousedown = function (e) { 
 	mouseDown = 1;
 	if (!eraser)
 	{
@@ -34,11 +39,12 @@ myCanvas.onmousedown = function (e) {
 		currLine = line.key();
 	}
 }
-myCanvas.onmouseout = myCanvas.onmouseup = function () {
+myCanvas.ontouchend = myCanvas.onmouseout = myCanvas.onmouseup = function () {
 	mouseDown = 0; 
 	lastPoint = null;
 	currLine = 0;
 };
+
 
 var drawLineOnMouseMove = function(e) {
 	if (!mouseDown) return;
@@ -48,11 +54,8 @@ var drawLineOnMouseMove = function(e) {
 
 	// Bresenham's line algorithm. We use this to ensure smooth lines are drawn
 	var offset = $('canvas').offset();
-	// var offset = 0;
 	var x1 = Math.round(e.pageX - offset.left),
 	y1 = Math.round(e.pageY - offset.top);
-	// var x1 = e.pageX,
-	// y1 = e.pageY;
 	var x0 = (lastPoint == null) ? x1 : lastPoint[0];
 	var y0 = (lastPoint == null) ? y1 : lastPoint[1];
 	var dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0);
@@ -61,17 +64,15 @@ var drawLineOnMouseMove = function(e) {
 		//write the pixel into Firebase, or if we are drawing white, remove the pixel
 		if (eraser)
 		{
-			console.log("x "+ x1 + " y "+y1);
 			pixelRef.child(x1 + ":" + y1).remove();
-			console.log("REMOVED");
 			break;
 		}
 		else
 		{
 			pixelRef.child(x0 + ":" + y0).set({
-				color: true/*currentColor === "fff" ? null : currentColor*/,
 				line: currLine
 			});
+
 			var px = x0 + ":" + y0;
 			line.push({
 				'px' : px
@@ -93,6 +94,7 @@ var drawLineOnMouseMove = function(e) {
 };
 $(myCanvas).mousemove(drawLineOnMouseMove);
 $(myCanvas).mousedown(drawLineOnMouseMove);
+myCanvas.addEventListener("touchmove", drawLineOnMouseMove, false);
 
 var drawPixel = function(snapshot) {
 	var coords = snapshot.key().split(":");
@@ -102,11 +104,9 @@ var drawPixel = function(snapshot) {
 var clearPixel = function(snapshot) {
 	var coords = snapshot.key().split(":");
 	var toDelete = snapshot.val().line;
-	console.log("REMOVED ", + toDelete);
 	linesRef.child(toDelete).remove();
 
 	context.clearRect(parseInt(coords[0]), parseInt(coords[1]), 1, 1);
-	console.log("DELETED");
 
 };
 var clearLine = function(snapshot) {

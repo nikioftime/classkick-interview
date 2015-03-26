@@ -1,15 +1,54 @@
 @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css");
+@import url("http://fonts.googleapis.com/css?family=Roboto");
 
 .cycle {
-	background-color: red;
+	background-color: #004a7b;
 	width: 25%;
-	height: 200px;
+	margin: 20px;
+	height: 150px;
+	border: none;
+	outline: none;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	border-radius: 20px;
 }
 
 .on {
-	background-color: blue;
+	background-color: #c06b00;
 }
 
-canvas {
+#fire #fire-extinguisher {
+	display: inline;
+	float: right;
+}
+
+a {
+	font-family: 'Roboto';
+	text-decoration: none;
+	font-size: 30px;
+	color: #004a7b;
+	border: solid;
+	padding: 5px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	border-radius: 20px;
+}
+
+a:hover {
+	color: #c06b00;
+}
+
+h2 
+{
+	font-size: 25px;
+}
+
+#drawing-canvas {
 	border-style: solid;
+}
+
+#tools-panel button {
+	width: 100px;
 }
